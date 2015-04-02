@@ -2,7 +2,7 @@
   "version"      : "0.1.0",
   "private"      : true,
   "nodejs"       : true,
-  "main"         : "/app.js",
+  "main"         : "/limonium.js",
   "dependencies" : {
     "express"    : "4.10.x",
       "body-parser"     : "*",
