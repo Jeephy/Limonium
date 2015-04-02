@@ -12,7 +12,19 @@
 // ------- 头部模块和全局变量    BEGIN MODULE SCOPE VARIABLES ---------
 
 var express = require( 'express' );
-var handlebars = require( 'express3-handlebars' ).create({ defaultlayout: 'main' });
+
+var app = express();
+
+var handlebars = require('express3-handlebars').create({
+    defaultLayout:'main',
+    helpers: {
+        section: function(name, options){
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
 
 //    body_parser = require( 'body-parser' ),
 //    method_override = require( 'method-override'),
@@ -20,8 +32,6 @@ var handlebars = require( 'express3-handlebars' ).create({ defaultlayout: 'main'
 //    morgan = require ( 'morgan'),
 //    error_handler = require ( 'errorhandler'),
 //    routes  = require( './lib/routes.js' );
-
-var app = express();
 
 app.engine( 'handlebars', handlebars.engine );
 app.set( 'view engine', 'handlebars' );
@@ -67,6 +77,10 @@ app.get('/about', function (req, res) {
     res.render('about');
 });
 
+app.get('/test', function (req, res) {
+    res.render('jquerytest');
+});
+
 app.use(function(req, res) {
     res.status(404);
     res.render('404');
@@ -79,6 +93,7 @@ app.use(function(err, req, res, next) {
 });
 
 // ---------------------------------------------------------
+
 
 
 // ------------ BEGIN START SERVER --------------
