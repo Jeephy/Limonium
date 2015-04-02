@@ -5,13 +5,14 @@
   "main"         : "/limonium.js",
   "dependencies" : {
     "express"    : "4.10.x",
-      "body-parser"     : "*",
-      "method-override" : "*",
-      "serve-static"    : "*",
-      "morgan"          : "*",
-      "errorhandler"    : "*",
+      "body-parser"       : "*",
+      "method-override"   : "*",
+      "serve-static"      : "*",
+      "morgan"            : "*",
+      "errorhandler"      : "*",
     "mongodb"    : "2.0.x",
-    "socket.io"  : "0.9.x"
+    "socket.io"  : "0.9.x",
+    "express3-handlebars" : "*"
   },
 
   "maintainers"  : {
