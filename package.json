@@ -3,6 +3,7 @@
   "private"      : true,
   "nodejs"       : true,
   "main"         : "/limonium.js",
+  "license"      : "GPL, MIT",
   "dependencies" : {
     "express"    : "4.10.x",
       "body-parser"       : "*",
