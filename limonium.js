@@ -12,6 +12,7 @@
 // ------- 头部模块和全局变量    BEGIN MODULE SCOPE VARIABLES ---------
 
 var express = require( 'express' );
+var url = require( 'url' );
 
 var app = express();
 
@@ -25,6 +26,8 @@ var handlebars = require('express3-handlebars').create({
         }
     }
 });
+
+console.log('dirname : '+__dirname);
 
 //    body_parser = require( 'body-parser' ),
 //    method_override = require( 'method-override'),
@@ -67,7 +70,7 @@ app.set( 'view engine', 'handlebars' );
 
 // -------- 路由配置    BEGIN ROUTE CONFIGURATION ----------
 
-app.use(express.static( __dirname + '/public/asset'));
+app.use(express.static( __dirname + '/public'));
 
 app.get('/', function(req, res) {
     res.render('home');

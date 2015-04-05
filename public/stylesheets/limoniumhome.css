@@ -1,0 +1,41 @@
+h1,h3,p,a,button {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    color: #843534;
+}
+
+.mainpage {
+    height: 750px;
+    background-color: #737373;
+}
+
+.page-1st {
+    height: 800px;
+    width: 100%;
+    position: absolute;
+    background-position: center center;
+    background-size: cover;
+}
+
+#page1st {
+    background-image: url("/asset/images/favicon.png");
+    background-repeat: no-repeat;
+    background-size: 100px,100px;
+    background-position: 200px,10px;
+}
+
+.headh1content {
+    margin-top: 150px;
+    line-height: 75px;
+}
+
+.title-text {
+    margin-left: 50px;
+}
+
+.headfontsize h1{
+    font-size: 50pt;
+    color: #ffffff;
+}
