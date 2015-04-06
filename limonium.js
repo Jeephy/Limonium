@@ -140,7 +140,7 @@ app.use(function(err, req, res, next) {
 
 // ----------------- 启动服务器    BEGIN START SERVER -------------------
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.listen(app.get('port'), function() {
     console.log('dirname : '+__dirname);
     console.log('Express server listening on port :' + app.get('port'));

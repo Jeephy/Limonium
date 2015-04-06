@@ -1,6 +1,6 @@
 h1,h3,p,a,button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-left: 50px;
 }
 
@@ -11,7 +11,7 @@ h1 {
 h2 {
     color: darkolivegreen;
     margin-left: 50px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .mainpage {
@@ -20,7 +20,7 @@ h2 {
 }
 
 .formContainer {
-    margin-top: 50px;
+    margin-top: 20px;
     margin-left: 50px;
 }
 
