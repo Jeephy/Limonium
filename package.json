@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "nodejs": true,
-  "main": "/limonium.js",
+  "main": "/server.js",
   "license": "GPL, MIT",
   "dependencies": {
     "body-parser": "^1.12.2",
