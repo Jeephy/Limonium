@@ -11,8 +11,9 @@
 
 // ------- 头部模块和全局变量    BEGIN MODULE SCOPE VARIABLES ---------
 
-var express = require( 'express' );
-var url = require( 'url' );
+var express = require( 'express' ),
+    bodyparser = require( 'body-parser' ),
+    formidable = require( 'formidable' );
 
 var app = express();
 
@@ -27,29 +28,17 @@ var handlebars = require('express3-handlebars').create({
     }
 });
 
-console.log('dirname : '+__dirname);
-
-//    body_parser = require( 'body-parser' ),
-//    method_override = require( 'method-override'),
-//    serve_staic = require ( 'serve-static'),
-//    morgan = require ( 'morgan'),
-//    error_handler = require ( 'errorhandler'),
 //    routes  = require( './lib/routes.js' );
-
-app.engine( 'handlebars', handlebars.engine );
-app.set( 'view engine', 'handlebars' );
 
 // -------------------------------------------------------------------
 
 
 
 // -------- BEGIN SERVER CONFIGURATION ----------
-//
-//    app.use( body_parser.json() );
-//    app.use( body_parser.urlencoded({ extended: true }));
-//    app.use( method_override() );
-//    app.use( serve_staic( __dirname + './static' ) );
-//
+
+app.engine( 'handlebars', handlebars.engine );
+app.set( 'view engine', 'handlebars' );
+
 //if ('development' === app.get('env')) {
 //    app.use( morgan() );
 //    app.use( error_handler({
@@ -71,6 +60,7 @@ app.set( 'view engine', 'handlebars' );
 // -------- 路由配置    BEGIN ROUTE CONFIGURATION ----------
 
 app.use(express.static( __dirname + '/public'));
+app.use( bodyparser() );
 
 app.get('/', function(req, res) {
     res.render('home');
@@ -97,6 +87,37 @@ app.get('/data/nursery-rhyme', function (req, res) {
     });
 });
 
+app.get('/newsletter', function(req, res) {
+    res.render('newsletter', {csrf: 'CSRF token goes here'});
+});
+
+app.post('/process', function(req, res) {
+    if (req.xhr || req.accepts('json, html') === 'json') {
+        res.send({success: true});
+    } else {
+        res.redirect(303, '/thank-you');
+    }
+});
+
+app.get('/contest/vacation-photo', function(req, res) {
+    var now = new Date();
+    res.render('Contest/vacation-photo', {
+        year: now.getFullYear(), month: now.getMonth()
+    });
+});
+
+app.post('/contest/vacation-photo/:year/:month', function(req, res) {
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        if (err) return res.redirect(303, '/error');
+        console.log('received fields: ');
+        console.log(fields);
+        console.log('files: ');
+        console.log(files);
+        res.redirect(303, '/thank-you');
+    });
+});
+
 app.use(function(req, res) {
     res.status(404);
     res.render('404');
@@ -112,10 +133,11 @@ app.use(function(err, req, res, next) {
 
 
 
-// ------------ BEGIN START SERVER --------------
+// ----------------- 启动服务器    BEGIN START SERVER -------------------
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {
+    console.log('dirname : '+__dirname);
     console.log('Express server listening on port :' + app.get('port'));
 });
-// -----------------------------------------------
+// ---------------------------------------------------------------------

@@ -1,18 +1,36 @@
 h1,h3,p,a,button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 30px;
+    margin-left: 50px;
 }
 
 h1 {
-    color: #843534;
+    color: #5cb85c;
+}
+
+h2 {
+    color: darkolivegreen;
+    margin-left: 50px;
+    margin-top: 30px;
 }
 
 .mainpage {
-    height: 750px;
+    height: 280px;
     background-color: #737373;
 }
 
+.formContainer {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.form-group {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
 .page-1st {
-    height: 800px;
+    height: 300px;
     width: 100%;
     position: absolute;
     background-position: center center;
@@ -23,12 +41,11 @@ h1 {
     background-image: url("/asset/images/favicon.png");
     background-repeat: no-repeat;
     background-size: 100px,100px;
-    background-position: 200px,10px;
-}
+    background-position: abbr;
 
 .headh1content {
-    margin-top: 150px;
-    line-height: 75px;
+    margin-top: 20px;
+    line-height: 90px;
 }
 
 .title-text {
