@@ -59,7 +59,8 @@ app.set( 'view engine', 'handlebars' );
 
 // -------- 路由配置    BEGIN ROUTE CONFIGURATION ----------
 
-app.use(express.static( __dirname + '/public'));
+app.use( express.static( __dirname + '/public') );
+
 app.use( bodyparser() );
 
 app.get('/', function(req, res) {
@@ -68,6 +69,10 @@ app.get('/', function(req, res) {
 
 app.get('/about', function (req, res) {
     res.render('about');
+});
+
+app.get('/thank-you', function (req, res) {
+    res.render('thankyou');
 });
 
 app.get('/test', function (req, res) {
@@ -101,7 +106,7 @@ app.post('/process', function(req, res) {
 
 app.get('/contest/vacation-photo', function(req, res) {
     var now = new Date();
-    res.render('Contest/vacation-photo', {
+    res.render('contest/vacation-photo', {
         year: now.getFullYear(), month: now.getMonth()
     });
 });
