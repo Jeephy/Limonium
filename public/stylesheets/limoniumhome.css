@@ -40,8 +40,9 @@ h2 {
 #page1st {
     background-image: url("/asset/images/favicon.png");
     background-repeat: no-repeat;
-    background-size: 100px,100px;
+    background-size: 100px, 100px;
     background-position: abbr;
+}
 
 .headh1content {
     margin-top: 20px;
@@ -52,7 +53,28 @@ h2 {
     margin-left: 50px;
 }
 
-.headfontsize h1{
+.headfontsize h1 {
     font-size: 50pt;
     color: #ffffff;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }
