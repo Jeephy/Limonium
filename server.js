@@ -12,15 +12,16 @@
 // ------- 头部模块和全局变量    BEGIN MODULE SCOPE VARIABLES ---------
 
 var express = require( 'express' ),
-    https = require( 'https' ),
-    fs = require( 'fs' ),
+    http = require( 'http') ,
+    //https = require( 'https' ),
+    //fs = require( 'fs' ),
     bodyparser = require( 'body-parser'),
     formidable = require( 'formidable' );
 
-var options = {
-    key: fs.readFileSync(__dirname + '/key.pem'),
-    cert: fs.readFileSync(__dirname + '/key-cert.pem')
-};
+//var options = {
+//    key: fs.readFileSync(__dirname + '/key.pem'),
+//    cert: fs.readFileSync(__dirname + '/key-cert.pem')
+//};
 
 var app = express();
 
@@ -148,7 +149,8 @@ app.use(function(err, req, res, next) {
 // ----------------- 启动服务器    BEGIN START SERVER -------------------
 
 app.set('port', process.env.PORT || 8080);
-https.createServer(options, app).listen(app.get('port'), function() {
+http.createServer(app).listen(app.get('port'), function() {
+//https.createServer(options, app).listen(app.get('port'), function() {
     console.log('dirname : '+__dirname);
     console.log('Express server listening on port :' + app.get('port'));
 });
