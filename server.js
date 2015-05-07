@@ -36,8 +36,6 @@ var handlebars = require('express3-handlebars').create({
     }
 });
 
-//    routes  = require( './lib/routes.js' );
-
 // -------------------------------------------------------------------
 
 
@@ -47,20 +45,6 @@ var handlebars = require('express3-handlebars').create({
 app.engine( 'handlebars', handlebars.engine );
 app.set( 'view engine', 'handlebars' );
 
-//if ('development' === app.get('env')) {
-//    app.use( morgan() );
-//    app.use( error_handler({
-//        dumpExceptions : true,
-//        showStack      : true
-//    }) );
-//};
-//
-//if ( 'production' === app.get('env'))  {
-//    app.use( error_handler() )
-//};
-
-// routes.configRoutes( app, server );
-// app.get('./lib', routes.js);
 // --------------------------------------------------
 
 
@@ -68,7 +52,6 @@ app.set( 'view engine', 'handlebars' );
 // -------- 路由配置    BEGIN ROUTE CONFIGURATION ----------
 
 app.use( express.static( __dirname + '/public') );
-
 app.use( bodyparser() );
 
 app.get('/', function(req, res) {
