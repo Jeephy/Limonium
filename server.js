@@ -13,15 +13,8 @@
 
 var express = require( 'express' ),
     http = require( 'http') ,
-    //https = require( 'https' ),
-    //fs = require( 'fs' ),
     bodyparser = require( 'body-parser'),
     formidable = require( 'formidable' );
-
-//var options = {
-//    key: fs.readFileSync(__dirname + '/key.pem'),
-//    cert: fs.readFileSync(__dirname + '/key-cert.pem')
-//};
 
 var app = express();
 
@@ -66,23 +59,6 @@ app.get('/thank-you', function (req, res) {
     res.render('thankyou');
 });
 
-app.get('/test', function (req, res) {
-    res.render('jquerytest');
-});
-
-app.get('/nursery-rhyme', function (req, res) {
-    res.render('nursery-rhyme');
-});
-
-app.get('/data/nursery-rhyme', function (req, res) {
-    res.json({
-        animal: 'squirrel',
-        bodyPart: 'tail',
-        adjective: 'bushy',
-        noun: 'heck'
-    });
-});
-
 app.get('/newsletter', function(req, res) {
     res.render('newsletter', {csrf: 'CSRF token goes here'});
 });
@@ -93,25 +69,6 @@ app.post('/process', function(req, res) {
     } else {
         res.redirect(303, '/thank-you');
     }
-});
-
-app.get('/contest/vacation-photo', function(req, res) {
-    var now = new Date();
-    res.render('contest/vacation-photo', {
-        year: now.getFullYear(), month: now.getMonth()
-    });
-});
-
-app.post('/contest/vacation-photo/:year/:month', function(req, res) {
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-        if (err) return res.redirect(303, '/error');
-        console.log('received fields: ');
-        console.log(fields);
-        console.log('files: ');
-        console.log(files);
-        res.redirect(303, '/thank-you');
-    });
 });
 
 app.use(function(req, res) {
@@ -133,7 +90,6 @@ app.use(function(err, req, res, next) {
 
 app.set('port', process.env.PORT || 8080);
 http.createServer(app).listen(app.get('port'), function() {
-//https.createServer(options, app).listen(app.get('port'), function() {
     console.log('dirname : '+__dirname);
     console.log('Express server listening on port :' + app.get('port'));
 });
